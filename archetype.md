@@ -19,7 +19,7 @@ To create a new Jakarta EE project using this archetype, run the following comma
 ```shell
 mvn -DarchetypeGroupId=com.apuntesdejava \
     -DarchetypeArtifactId=jakarta-ee-essentials \
-    -DarchetypeVersion=0.0.7 \
+    -DarchetypeVersion=__ARCHETYPE_VERSION__ \
     -DjakartaProfile={jakartaProfile} \
     -DjakartaModule={jakartaModule} \
     -DjakartaVersion={jakartaVersion} \
@@ -51,7 +51,7 @@ mvn -DarchetypeGroupId=com.apuntesdejava \
     -DgroupId=com.example \
     -DartifactId=example-app \
     -Dversion=1.0.0-SNAPSHOT \
-    -DarchetypeVersion=0.0.7 \
+    -DarchetypeVersion=__ARCHETYPE_VERSION__ \
     -DjakartaProfile=core \
     -DjakartaVersion=11.0.0 \
     org.apache.maven.plugins:maven-archetype-plugin:generate 
@@ -60,3 +60,25 @@ mvn -DarchetypeGroupId=com.apuntesdejava \
 
 ### Showing
 [![asciicast](https://asciinema.org/a/VybSbO8RQKmQQhSrTkMxcUzeI.svg)](https://asciinema.org/a/VybSbO8RQKmQQhSrTkMxcUzeI)
+
+<script>
+(() => {
+  const placeholder = '__ARCHETYPE_VERSION__';
+  const metadataUrl = 'https://search.maven.org/solrsearch/select?q=g:%22com.apuntesdejava%22%20AND%20a:%22jakarta-ee-essentials%22&rows=1&wt=json';
+
+  fetch(metadataUrl)
+    .then((response) => response.ok ? response.json() : Promise.reject(response))
+    .then((metadata) => {
+      const version = metadata.response.docs[0].latestVersion;
+
+      document.querySelectorAll('code').forEach((code) => {
+        code.textContent = code.textContent.replaceAll(placeholder, version);
+      });
+    })
+    .catch(() => {
+      document.querySelectorAll('code').forEach((code) => {
+        code.textContent = code.textContent.replaceAll(placeholder, '0.0.7');
+      });
+    });
+})();
+</script>
