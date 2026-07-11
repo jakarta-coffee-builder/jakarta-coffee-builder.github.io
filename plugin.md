@@ -35,15 +35,7 @@ mvn com.apuntesdejava:jakarta-coffee-builder-plugin:add-faces
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="6.0" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">
-    <servlet>
-        <description>Jakarta Faces Servlet Definition</description>
-        <servlet-name>JakartaServlet</servlet-name>
-        <servlet-class>jakarta.faces.webapp.FacesServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>JakartaServlet</servlet-name>
-        <url-pattern>*.faces</url-pattern>
-    </servlet-mapping>
+ 
     <welcome-file-list>
         <welcome-file>index.faces</welcome-file>
     </welcome-file-list>
